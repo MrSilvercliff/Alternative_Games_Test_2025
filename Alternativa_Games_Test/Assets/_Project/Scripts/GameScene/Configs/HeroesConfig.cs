@@ -20,12 +20,12 @@ namespace _Project.Scripts.GameScene.Configs
     [Serializable]
     public class HeroData
     {
-        public Sprite Icon => _icon;
-        public string TitleText => _titleText;
-        public string DescriptionText => _descriptionText;
+        public Sprite Portrait => _portrait;
+        public string Name => _name;
+        public string Description => _description;
 
-        [SerializeField] private Sprite _icon;
-        [SerializeField] private string _titleText;
-        [SerializeField] private string _descriptionText;
+        [SerializeField] private Sprite _portrait;
+        [SerializeField] private string _name;
+        [SerializeField] private string _description;
     }
 }
