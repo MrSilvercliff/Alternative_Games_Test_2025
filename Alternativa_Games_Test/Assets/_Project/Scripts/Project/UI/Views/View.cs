@@ -1,20 +1,27 @@
+using _Project.Scripts.Project.Interfaces;
 using UnityEngine;
 
 namespace _Project.Scripts.Project.UI.Views
 {
-    public interface IView
+    public interface IView : IInitializable, IFlushable
     {
-        void Init();
         void Open();
         void Close();
     }
 
     public abstract class View : MonoBehaviour, IView
     {
-        public void Init()
+        public bool Init()
         {
             gameObject.SetActive(false);
-            OnInit();
+            var result = OnInit();
+            return result;
+        }
+
+        public bool Flush()
+        {
+            var result = OnFlush();
+            return result;
         }
 
         public void Open()
@@ -27,6 +34,8 @@ namespace _Project.Scripts.Project.UI.Views
             gameObject.SetActive(false);
         }
 
-        protected abstract void OnInit();
+        protected abstract bool OnInit();
+
+        protected abstract bool OnFlush();
     }
 }
