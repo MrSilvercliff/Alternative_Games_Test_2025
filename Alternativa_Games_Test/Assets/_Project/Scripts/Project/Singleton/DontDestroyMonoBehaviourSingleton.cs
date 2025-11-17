@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Project.Scripts.Project.Log;
+using UnityEngine;
 
 namespace _Project.Scripts.Project.Singleton
 {

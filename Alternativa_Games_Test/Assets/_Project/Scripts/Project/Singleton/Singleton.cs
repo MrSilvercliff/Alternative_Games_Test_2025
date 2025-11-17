@@ -2,11 +2,7 @@
 
 namespace _Project.Scripts.Project.Singleton
 {
-    public interface ISingleton<T>  : IInitializable, IFlushable
-    {
-    }
-
-    public abstract class Singleton<T> : ISingleton<T> where T : Singleton<T>, new()
+    public abstract class Singleton<T> : IInitializable, IFlushable where T : Singleton<T>, new()
     {
         public static T Instance
         {

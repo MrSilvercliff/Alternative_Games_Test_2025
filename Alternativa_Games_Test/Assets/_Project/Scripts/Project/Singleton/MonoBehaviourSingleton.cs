@@ -1,12 +1,9 @@
-﻿using UnityEngine;
+﻿using _Project.Scripts.Project.Interfaces;
+using UnityEngine;
 
 namespace _Project.Scripts.Project.Singleton
 {
-    public interface IMonoBehaviourSingleton<T> : ISingleton<T>
-    { 
-    }
-
-    public abstract class MonoBehaviourSingleton<T> : MonoBehaviour, IMonoBehaviourSingleton<T> where T : MonoBehaviourSingleton<T>
+    public abstract class MonoBehaviourSingleton<T> : MonoBehaviour, IInitializable, IFlushable where T : MonoBehaviourSingleton<T>
     {
         public static T Instance => _instance;
 
@@ -14,7 +11,7 @@ namespace _Project.Scripts.Project.Singleton
 
         protected virtual void Awake()
         {
-            _instance = this as T;
+            _instance = (T)this;
         }
 
         public abstract bool Init();
