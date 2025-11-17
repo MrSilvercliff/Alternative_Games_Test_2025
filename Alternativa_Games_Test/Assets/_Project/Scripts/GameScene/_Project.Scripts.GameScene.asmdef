@@ -2,7 +2,8 @@
     "name": "_Project.Scripts.GameScene",
     "rootNamespace": "",
     "references": [
-        "GUID:fcceddeafd582744589090d0a1b36569"
+        "GUID:fcceddeafd582744589090d0a1b36569",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
