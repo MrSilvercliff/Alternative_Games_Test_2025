@@ -5,19 +5,10 @@ namespace _Project.Scripts.Project.Singleton
     public abstract class DontDestroyMonoBehaviourSingleton<T> : MonoBehaviourSingleton<T>
         where T : DontDestroyMonoBehaviourSingleton<T>
     {
-        public static new T Instance
+        protected override void Awake()
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    var go = new GameObject(typeof(T).Name);
-                    _instance = go.AddComponent<T>();
-                    DontDestroyOnLoad(go);
-                }
-
-                return _instance;
-            }
+            base.Awake();
+            DontDestroyOnLoad(gameObject);
         }
     }
 }

@@ -6,13 +6,13 @@ namespace _Project.Scripts.Project.Singleton
     { 
     }
 
-    public abstract class MonoBehaviourSingleton<T> : MonoBehaviour, IMonoBehaviourSingleton<T> where T : MonoBehaviour
+    public abstract class MonoBehaviourSingleton<T> : MonoBehaviour, IMonoBehaviourSingleton<T> where T : MonoBehaviourSingleton<T>
     {
         public static T Instance => _instance;
 
-        protected static T _instance;
+        private static T _instance;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _instance = this as T;
         }
