@@ -15,6 +15,15 @@ namespace _Project.Scripts.GameScene.Configs
         public IReadOnlyList<HeroData> HeroDataList => _heroDataList;
 
         [SerializeField] private List<HeroData> _heroDataList;
+
+        /// <summary>
+        /// EDITOR ONLY!
+        /// </summary>
+        /// <param name="heroesData"></param>
+        public void SetHeroesData(List<HeroData> heroesData)
+        { 
+            _heroDataList = heroesData;
+        }
     }
 
     [Serializable]
@@ -27,5 +36,12 @@ namespace _Project.Scripts.GameScene.Configs
         [SerializeField] private Sprite _portrait;
         [SerializeField] private string _name;
         [SerializeField] private string _description;
+
+        public HeroData(string name, string description, Sprite portrait)
+        {
+            _name = name;
+            _description = description;
+            _portrait = portrait;
+        }
     }
 }
