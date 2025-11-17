@@ -16,10 +16,12 @@ namespace _Project.Scripts.GameScene.Scene
         public IGameSceneCoreConfigs Configs => _configs;
 
         [SerializeField] private GameSceneCoreConfigs _configs;
+        [SerializeField] private GameSceneCoreObjectPools _objectPools;
 
         public override bool Init()
         {
             LogUtils.Info(this, $"Init");
+            _objectPools.Init();
             return true;
         }
 
