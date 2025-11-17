@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
-    public class HeroWidget : SelectableWidget<HeroData, HeroWidgetView>, IPoolable
+    public class HeroWidget : SelectableWidget<HeroWidget, HeroData, HeroWidgetView>, IPoolable
     {
         [SerializeField] private Button _buttonExpand;
         [SerializeField] private GameObject _description;
@@ -31,6 +31,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             var descriptionIsActive = _description.activeInHierarchy;
             var newActive = !descriptionIsActive;
             _description.SetActive(newActive);
+            InvokeSelectEvent(this);
         }
     }
 }
