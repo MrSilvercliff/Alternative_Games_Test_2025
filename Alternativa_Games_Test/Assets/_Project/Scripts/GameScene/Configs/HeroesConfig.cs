@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace _Project.Scripts.GameScene.Configs
 {
-    public interface IScrollItemsConfig
+    public interface IHeroesConfig
     {
-        IReadOnlyList<ScrollItemData> ScrollItems { get; }
+        IReadOnlyList<HeroData> HeroDataList { get; }
     }
 
     [CreateAssetMenu(fileName = "ScrollItemsConfig", menuName = "_Project/Configs/GameScene/Scroll Items Config")]
-    public class ScrollItemsConfig : ScriptableObject, IScrollItemsConfig
+    public class HeroesConfig : ScriptableObject, IHeroesConfig
     {
-        public IReadOnlyList<ScrollItemData> ScrollItems => _scrollItems;
+        public IReadOnlyList<HeroData> HeroDataList => _heroDataList;
 
-        [SerializeField] private List<ScrollItemData> _scrollItems;
+        [SerializeField] private List<HeroData> _heroDataList;
     }
 
     [Serializable]
-    public class ScrollItemData
+    public class HeroData
     {
         public Sprite Icon => _icon;
         public string TitleText => _titleText;
