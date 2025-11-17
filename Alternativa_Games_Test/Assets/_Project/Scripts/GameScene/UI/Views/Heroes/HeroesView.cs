@@ -8,13 +8,11 @@ namespace _Project.Scripts.GameScene.UI.Views.Heroes
 {
     public class HeroesView : View
     {
-        [SerializeField] private Transform _heroWidgetContainer;
-
-        private List<HeroWidget> _heroWidgets;
+        [SerializeField] private HeroesScroll _heroesScroll;
 
         protected override bool OnInit()
         {
-            InitHeroWidgets();
+            InitHeroesScroll();
             return true;
         }
 
@@ -23,23 +21,11 @@ namespace _Project.Scripts.GameScene.UI.Views.Heroes
             return true;
         }
 
-        private void InitHeroWidgets()
+        private void InitHeroesScroll()
         {
-            _heroWidgets = new();
-
+            _heroesScroll.Init();
             var heroesList = GameSceneCore.Instance.Configs.Heroes.HeroDataList;
-            var heroWidgetPool = GameSceneCore.Instance.ObjectPools.HeroWidgetPool;
-
-            for (int i = 0; i < heroesList.Count; i++)
-            {
-                var heroData = heroesList[i];
-
-                var newWidget = heroWidgetPool.Spawn();
-                newWidget.transform.SetParent(_heroWidgetContainer);
-                newWidget.Setup(heroData);
-                newWidget.gameObject.SetActive(true);
-                _heroWidgets.Add(newWidget);
-            }
+            _heroesScroll.Setup(heroesList);
         }
     }
 }
