@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace _Project.Scripts.Project.ObjectPools
 {
-    public class ObjectPoolItem : MonoBehaviour
+    [Serializable]
+    public class ObjectPoolInitData
     {
         public GameObject Prefab => _prefab;
         public Transform Container => _container;
