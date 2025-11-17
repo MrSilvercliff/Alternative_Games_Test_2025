@@ -1,23 +1,15 @@
 using _Project.Scripts.GameScene.Configs;
 using _Project.Scripts.Project.ObjectPools;
+using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
-    public class HeroWidget : MonoBehaviour, IPoolable
+    public class HeroWidget : SelectableWidget<HeroData, HeroWidgetView>, IPoolable
     {
-        [SerializeField] private HeroWidgetView _view;
         [SerializeField] private Button _buttonExpand;
         [SerializeField] private GameObject _description;
-
-        private HeroData _heroData;
-
-        public void Setup(HeroData heroData)
-        { 
-            _heroData = heroData;
-            _view.Refresh(heroData);
-        }
 
         public void OnCreate()
         {
@@ -31,6 +23,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         public void OnDespawn()
         {
+            _data = null;
         }
 
         private void OnButtonExpandClick()
