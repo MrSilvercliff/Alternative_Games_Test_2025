@@ -9,11 +9,13 @@ namespace _Project.Scripts.GameScene.Scene
     public interface IGameSceneCore
     {
         IGameSceneCoreConfigs Configs { get; }
+        IGameSceneCoreObjectPools ObjectPools { get; }
     }
 
     public class GameSceneCore : DontDestroyMonoBehaviourSingleton<GameSceneCore>, IGameSceneCore
     {
         public IGameSceneCoreConfigs Configs => _configs;
+        public IGameSceneCoreObjectPools ObjectPools => _objectPools;
 
         [SerializeField] private GameSceneCoreConfigs _configs;
         [SerializeField] private GameSceneCoreObjectPools _objectPools;
