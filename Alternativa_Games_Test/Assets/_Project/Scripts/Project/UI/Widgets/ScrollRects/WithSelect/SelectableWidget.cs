@@ -1,4 +1,4 @@
-using UnityEditor.Compilation;
+using System;
 using UnityEngine;
 
 namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
@@ -8,7 +8,19 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
         public abstract void SetSelected(bool selected);
     }
 
-    public abstract class SelectableWidget<TWidgetData, TViewType> : SelectableWidget where TViewType : SelectableWidgetView<TWidgetData>
+    public abstract class SelectableWidget<TWidgetType> : SelectableWidget where TWidgetType : SelectableWidget
+    {
+        public event Action<TWidgetType> WidgetSelectEvent;
+
+        protected void InvokeSelectEvent(TWidgetType widget)
+        {
+            WidgetSelectEvent?.Invoke(widget);
+        }
+    }
+
+    public abstract class SelectableWidget<TWidgetType, TWidgetData, TViewType> : SelectableWidget<TWidgetType> 
+        where TWidgetType : SelectableWidget
+        where TViewType : SelectableWidgetView<TWidgetData>
     {
         [SerializeField] protected TViewType _view;
 
