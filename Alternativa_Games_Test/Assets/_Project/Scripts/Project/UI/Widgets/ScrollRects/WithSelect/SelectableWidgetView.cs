@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 {
-    public class SelectableWidgetView : MonoBehaviour
+    public abstract class SelectableWidgetView<TWidgetData> : MonoBehaviour
     {
         [Header("SELECTABLE WIDGET VIEW")]
         [SerializeField] private Color _notSelectedColor;
@@ -17,5 +17,7 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
             else
                 _backImage.color = _notSelectedColor;
         }
+
+        public abstract void Refresh(TWidgetData widgetData);
     }
 }
