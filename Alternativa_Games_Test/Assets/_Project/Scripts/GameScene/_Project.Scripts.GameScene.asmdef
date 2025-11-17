@@ -1,0 +1,16 @@
+{
+    "name": "_Project.Scripts.GameScene",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fcceddeafd582744589090d0a1b36569"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
