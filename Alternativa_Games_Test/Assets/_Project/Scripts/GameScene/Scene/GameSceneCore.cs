@@ -1,4 +1,5 @@
 using _Project.Scripts.GameScene.Configs;
+using _Project.Scripts.GameScene.Input;
 using _Project.Scripts.Project.Log;
 using _Project.Scripts.Project.Singleton;
 using System;
@@ -10,6 +11,8 @@ namespace _Project.Scripts.GameScene.Scene
     {
         IGameSceneCoreConfigs Configs { get; }
         IGameSceneCoreObjectPools ObjectPools { get; }
+        
+        IInputController InputController { get; }
     }
 
     public class GameSceneCore : DontDestroyMonoBehaviourSingleton<GameSceneCore>, IGameSceneCore
@@ -17,13 +20,19 @@ namespace _Project.Scripts.GameScene.Scene
         public IGameSceneCoreConfigs Configs => _configs;
         public IGameSceneCoreObjectPools ObjectPools => _objectPools;
 
+        public IInputController InputController => _inputController;
+
         [SerializeField] private GameSceneCoreConfigs _configs;
         [SerializeField] private GameSceneCoreObjectPools _objectPools;
+        [SerializeField] private InputHandler _inputHandler;
+
+        private InputController _inputController;
 
         public override bool Init()
         {
             LogUtils.Info(this, $"Init");
             _objectPools.Init();
+            InitInput();
             return true;
         }
 
@@ -31,6 +40,13 @@ namespace _Project.Scripts.GameScene.Scene
         {
             LogUtils.Info(this, $"Flush");
             return true;
+        }
+
+        private void InitInput()
+        {
+            _inputController = new InputController();
+            _inputController.Init();
+            _inputHandler.Init();
         }
     }
 }
