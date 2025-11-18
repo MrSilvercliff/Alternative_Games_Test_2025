@@ -190,6 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: _Project.Scripts.GameScene::_Project.Scripts.GameScene.UI.Widgets.Hero.HeroesScroll
   _scrollRect: {fileID: 7473952195794416435}
+  _scrollRectTransform: {fileID: 653397723499112974}
+  _scrollContentLayout: {fileID: 4678493966867278973}
 --- !u!1 &1566476305310935383
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +353,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 20
-    m_Bottom: 20
+    m_Bottom: 500
   m_ChildAlignment: 1
   m_Spacing: 20
   m_ChildForceExpandWidth: 0

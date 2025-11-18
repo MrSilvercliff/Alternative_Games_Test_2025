@@ -1,12 +1,14 @@
 using _Project.Scripts.GameScene.Configs;
 using _Project.Scripts.GameScene.Scene;
+using _Project.Scripts.Project.Extensions;
 using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
-    public class HeroesScroll : ScrollRectWithSelect<HeroData, HeroWidget>
+    public class HeroesScroll : VerticalScrollRectWithSelect<HeroData, HeroWidget>
     {
         protected override bool OnInit()
         {
@@ -33,8 +35,12 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
                 var heroData = _widgetDatas[i];
 
                 var newWidget = heroWidgetPool.Spawn();
+                _widgetBasicHeight = newWidget.RectTransform.rect.height;
                 newWidget.WidgetSelectEvent += OnWidgetSelectEvent;
                 newWidget.transform.SetParent(ScrollRectContent);
+                newWidget.transform.ResetLocalPosition();
+                newWidget.transform.ResetLocalRotation();
+                newWidget.transform.ResetLocalScale();
                 newWidget.Setup(heroData);
                 newWidget.gameObject.SetActive(true);
                 _widgets.Add(newWidget);
@@ -56,6 +62,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         private void OnWidgetSelectEvent(HeroWidget widget)
         {
             SelectWidget(widget);
+            EventSystem.current.SetSelectedGameObject(_scrollRect.gameObject);
         }
     }
 }
