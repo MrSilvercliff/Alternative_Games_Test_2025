@@ -5,7 +5,14 @@ using UnityEngine.UI;
 
 namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 {
-    public abstract class ScrollRectWithSelect<TWidgetData, TSelectableWidget> : MonoBehaviour, IInitializable, IFlushable where TSelectableWidget : SelectableWidget
+    public abstract class ScrollRectWithSelect : MonoBehaviour
+    {
+        public abstract void SelectNextWidget();
+        public abstract void SelectPreviousWidget();
+        public abstract void InvokeWidgetInteract();
+    }
+
+    public abstract class ScrollRectWithSelect<TWidgetData, TSelectableWidget> : ScrollRectWithSelect, IInitializable, IFlushable where TSelectableWidget : SelectableWidget
     {
         public TSelectableWidget SelectedWidget { get; protected set; }
         public TWidgetData SelectedWidgetData { get; protected set; }
@@ -71,6 +78,31 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 
             lastSelectedWidget?.SetSelected(false);
             SelectedWidget.SetSelected(true);
+        }
+
+        public override void SelectNextWidget()
+        {
+            var lastIndex = _widgets.Count - 1;
+
+            if (SelectedIndex >= lastIndex)
+                return;
+
+            var newIndex = SelectedIndex + 1;
+            SelectWidget(newIndex);
+        }
+
+        public override void SelectPreviousWidget()
+        {
+            if (SelectedIndex == 0)
+                return;
+
+            var newIndex = SelectedIndex - 1;
+            SelectWidget(newIndex);
+        }
+
+        public override void InvokeWidgetInteract()
+        {
+            SelectedWidget.Interact();
         }
     }
 }

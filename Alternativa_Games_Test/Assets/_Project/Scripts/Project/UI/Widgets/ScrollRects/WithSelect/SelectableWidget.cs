@@ -6,6 +6,7 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
     public abstract class SelectableWidget : MonoBehaviour
     {
         public abstract void SetSelected(bool selected);
+        public abstract void Interact();
     }
 
     public abstract class SelectableWidget<TWidgetType> : SelectableWidget where TWidgetType : SelectableWidget
