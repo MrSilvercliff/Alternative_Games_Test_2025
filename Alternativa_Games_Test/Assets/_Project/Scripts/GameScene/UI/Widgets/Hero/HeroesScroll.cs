@@ -1,5 +1,7 @@
 using _Project.Scripts.GameScene.Configs;
+using _Project.Scripts.GameScene.Input;
 using _Project.Scripts.GameScene.Scene;
+using _Project.Scripts.Project.Core;
 using _Project.Scripts.Project.Extensions;
 using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect;
 using System;
@@ -8,8 +10,19 @@ using UnityEngine.EventSystems;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
-    public class HeroesScroll : VerticalScrollRectWithSelect<HeroData, HeroWidget>
+    public class HeroesScroll : VerticalScrollRectWithSelect<HeroData, HeroWidget>, IKeyboardInputListener
     {
+        private void OnEnable()
+        {
+            ProjectCore.Instance.InputController.Subscribe(this);
+        }
+
+        private void OnDisable()
+        {
+            ProjectCore.Instance.InputController.UnSubscribe(this);
+        }
+
+
         protected override bool OnInit()
         {
             return true;
@@ -63,6 +76,21 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         {
             SelectWidget(widget);
             EventSystem.current.SetSelectedGameObject(_scrollRect.gameObject);
+        }
+
+        public void OnUpArrowClicked()
+        {
+            SelectPreviousWidget();
+        }
+
+        public void OnDownArrowClicked()
+        {
+            SelectNextWidget();
+        }
+
+        public void OnEnterClicked()
+        {
+            SelectedWidget.Interact();
         }
     }
 }

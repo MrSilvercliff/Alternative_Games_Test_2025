@@ -1,13 +1,12 @@
 using _Project.Scripts.GameScene.Configs;
 using _Project.Scripts.Project.ObjectPools;
 using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect;
-using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelectAndInteract;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
-    public class HeroWidget : SelectableInteractableWidget<HeroWidget, HeroData, HeroWidgetView>, IPoolable
+    public class HeroWidget : SelectableWidget<HeroWidget, HeroData, HeroWidgetView>, IPoolable
     {
         [SerializeField] private Button _buttonExpand;
         [SerializeField] private GameObject _description;
@@ -33,7 +32,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             InvokeSelectEvent(this);
         }
 
-        public override void Interact()
+        public void Interact()
         {
             ToggleDescription();
         }
