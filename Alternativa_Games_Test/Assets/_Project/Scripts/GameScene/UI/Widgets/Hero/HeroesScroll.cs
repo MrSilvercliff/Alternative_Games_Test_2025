@@ -7,12 +7,14 @@ using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
     public class HeroesScroll : VerticalScrollRectWithSelect<HeroData, HeroWidget>, IKeyboardInputListener
     {
         [SerializeField] private GameObject _raycastBlocker;
+        [SerializeField] private ContentSizeFitter _contentSizeFitter;
 
         protected override void OnEnable()
         {
@@ -90,6 +92,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         private void OnWidgetSelectEvent(HeroWidget widget)
         {
+            _scrollRect.StopMovement();
             SelectWidget(widget);
             EventSystem.current.SetSelectedGameObject(_scrollRect.gameObject);
         }
@@ -97,11 +100,15 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         private void OnWidgetExpandStartEvent()
         {
             _raycastBlocker.SetActive(true);
+            _contentSizeFitter.enabled = false;
+            _scrollRect.StopMovement();
         }
 
         private void OnWidgetExpandEndEvent()
         {
             _raycastBlocker.SetActive(false);
+            _contentSizeFitter.enabled = true;
+            _scrollRect.StopMovement();
         }
 
         public void OnUpArrowClicked()

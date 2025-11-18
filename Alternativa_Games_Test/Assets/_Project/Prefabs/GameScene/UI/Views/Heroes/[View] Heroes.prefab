@@ -144,6 +144,7 @@ MonoBehaviour:
   _scrollContentLayout: {fileID: 4678493966867278973}
   _lerpTMultiplier: 4
   _raycastBlocker: {fileID: 3629057859783572108}
+  _contentSizeFitter: {fileID: 6746800785489160558}
 --- !u!1 &1566476305310935383
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +310,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 20
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
