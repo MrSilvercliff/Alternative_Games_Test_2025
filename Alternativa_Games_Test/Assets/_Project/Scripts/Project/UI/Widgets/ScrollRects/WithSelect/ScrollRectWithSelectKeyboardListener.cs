@@ -30,7 +30,6 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 
         public void OnEnterClicked()
         {
-            _scrollRectWithSelect.InvokeWidgetInteract();
         }
     }
 }

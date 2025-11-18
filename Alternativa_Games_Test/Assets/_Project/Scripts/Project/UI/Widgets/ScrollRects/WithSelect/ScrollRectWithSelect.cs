@@ -9,7 +9,6 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
     {
         public abstract void SelectNextWidget();
         public abstract void SelectPreviousWidget();
-        public abstract void InvokeWidgetInteract();
     }
 
     public abstract class ScrollRectWithSelect<TWidgetData, TSelectableWidget> : ScrollRectWithSelect, IInitializable, IFlushable where TSelectableWidget : SelectableWidget
@@ -18,12 +17,12 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
         public TWidgetData SelectedWidgetData { get; protected set; }
         public int SelectedIndex { get; protected set; }
 
-        protected Transform ScrollRectContent => _scrollRect.content;
+        protected RectTransform ScrollRectContent => _scrollRect.content;
 
         protected List<TSelectableWidget> _widgets;
         protected IReadOnlyList<TWidgetData> _widgetDatas;
 
-        [SerializeField] private ScrollRect _scrollRect;
+        [SerializeField] protected ScrollRect _scrollRect;
 
         public bool Init()
         {
@@ -66,6 +65,7 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 
             lastSelectedWidget?.SetSelected(false);
             SelectedWidget.SetSelected(true);
+            OnSelectWidget();
         }
 
         public void SelectWidget(int index)
@@ -78,6 +78,7 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 
             lastSelectedWidget?.SetSelected(false);
             SelectedWidget.SetSelected(true);
+            OnSelectWidget();
         }
 
         public override void SelectNextWidget()
@@ -89,6 +90,7 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 
             var newIndex = SelectedIndex + 1;
             SelectWidget(newIndex);
+            OnSelectWidget();
         }
 
         public override void SelectPreviousWidget()
@@ -98,11 +100,9 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 
             var newIndex = SelectedIndex - 1;
             SelectWidget(newIndex);
+            OnSelectWidget();
         }
 
-        public override void InvokeWidgetInteract()
-        {
-            SelectedWidget.Interact();
-        }
+        protected abstract void OnSelectWidget();
     }
 }

@@ -3,13 +3,23 @@ using UnityEngine;
 
 namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
 {
-    public abstract class SelectableWidget : MonoBehaviour
+    public interface ISelectableWidget
     {
-        public abstract void SetSelected(bool selected);
-        public abstract void Interact();
+        void SetSelected(bool selected);
     }
 
-    public abstract class SelectableWidget<TWidgetType> : SelectableWidget where TWidgetType : SelectableWidget
+    public interface ISelectableWidget<TWidgetType> where TWidgetType : ISelectableWidget
+    {
+        void SetSelected(bool selected);
+        event Action<TWidgetType> WidgetSelectEvent;
+    }
+
+    public abstract class SelectableWidget : UIWidget, ISelectableWidget
+    {
+        public abstract void SetSelected(bool selected);
+    }
+
+    public abstract class SelectableWidget<TWidgetType> : SelectableWidget, ISelectableWidget<TWidgetType> where TWidgetType : SelectableWidget
     {
         public event Action<TWidgetType> WidgetSelectEvent;
 
