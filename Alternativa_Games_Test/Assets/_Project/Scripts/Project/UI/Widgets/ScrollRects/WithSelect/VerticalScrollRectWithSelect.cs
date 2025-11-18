@@ -58,7 +58,7 @@ namespace _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect
             _endAnchoredPosition = anchoredPosition;
         }
 
-        public void OnUpdate()
+        public virtual void OnUpdate()
         {
             if (_lerpT > 1.0f)
                 return;

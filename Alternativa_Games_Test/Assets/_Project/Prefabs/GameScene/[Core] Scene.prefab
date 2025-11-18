@@ -80,6 +80,6 @@ MonoBehaviour:
     _heroesConfig: {fileID: 11400000, guid: c4b9371e4f4f0994da928c68b1a4f4f5, type: 2}
   _objectPools:
     _heroWidgetPoolInitData:
-      _prefab: {fileID: 2329088216018539581, guid: faa848e1f234fd84bb436d69055eb728, type: 3}
+      _prefab: {fileID: 2979649433690876274, guid: dde996d437bdc3544af24a553c07f393, type: 3}
       _container: {fileID: 1221446632713391101}
       _initCount: 0
