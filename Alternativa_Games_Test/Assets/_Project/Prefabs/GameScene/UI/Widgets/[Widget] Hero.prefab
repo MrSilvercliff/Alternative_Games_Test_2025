@@ -174,7 +174,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2544260710295101988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f3933f47bd03840ab6e64328e1ed1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: _Project.Scripts.GameScene::_Project.Scripts.GameScene.UI.Widgets.Hero.HeroWidget
+  _rectTransform: {fileID: 4564003972608866605}
   _view: {fileID: 6026760649995158949}
   _buttonExpand: {fileID: 3079211194779350305}
   _description: {fileID: 7006123902415711677}
