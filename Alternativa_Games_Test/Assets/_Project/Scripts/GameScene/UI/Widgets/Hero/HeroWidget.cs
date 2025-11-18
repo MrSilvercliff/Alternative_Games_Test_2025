@@ -28,10 +28,20 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         private void OnButtonExpandClick()
         {
+            ToggleDescription();
+            InvokeSelectEvent(this);
+        }
+
+        public override void Interact()
+        {
+            ToggleDescription();
+        }
+
+        private void ToggleDescription()
+        {
             var descriptionIsActive = _description.activeInHierarchy;
             var newActive = !descriptionIsActive;
             _description.SetActive(newActive);
-            InvokeSelectEvent(this);
         }
     }
 }
