@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.GameScene.Input
 {
-    public interface KeyboardInputListener
+    public interface IKeyboardInputListener
     {
         void OnUpArrowClicked();
         void OnDownArrowClicked();
