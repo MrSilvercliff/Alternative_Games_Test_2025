@@ -12,16 +12,17 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
     public class HeroesScroll : VerticalScrollRectWithSelect<HeroData, HeroWidget>, IKeyboardInputListener
     {
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             ProjectCore.Instance.InputController.Subscribe(this);
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             ProjectCore.Instance.InputController.UnSubscribe(this);
         }
-
 
         protected override bool OnInit()
         {

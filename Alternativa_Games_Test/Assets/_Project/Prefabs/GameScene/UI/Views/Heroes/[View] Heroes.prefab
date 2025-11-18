@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: _Project.Scripts.GameScene::_Project.Scripts.GameScene.UI.Widgets.Hero.HeroesScroll
   _scrollRect: {fileID: 7473952195794416435}
   _scrollContentLayout: {fileID: 4678493966867278973}
+  _lerpTMultiplier: 4
 --- !u!1 &1566476305310935383
 GameObject:
   m_ObjectHideFlags: 0
