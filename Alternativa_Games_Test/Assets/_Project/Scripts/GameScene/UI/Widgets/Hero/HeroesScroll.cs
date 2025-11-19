@@ -14,7 +14,6 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
     public class HeroesScroll : VerticalScrollRectWithSelect<HeroData, HeroWidget>, IKeyboardInputListener
     {
         [SerializeField] private GameObject _raycastBlocker;
-        [SerializeField] private ContentSizeFitter _contentSizeFitter;
 
         protected override void OnEnable()
         {
@@ -100,14 +99,12 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         private void OnWidgetExpandStartEvent()
         {
             _raycastBlocker.SetActive(true);
-            _contentSizeFitter.enabled = false;
             _scrollRect.StopMovement();
         }
 
         private void OnWidgetExpandEndEvent()
         {
             _raycastBlocker.SetActive(false);
-            _contentSizeFitter.enabled = true;
             _scrollRect.StopMovement();
         }
 
