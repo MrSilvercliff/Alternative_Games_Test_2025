@@ -1,10 +1,11 @@
+using _Project.Scripts.GameScene.Input;
 using _Project.Scripts.Project.Interfaces;
 using _Project.Scripts.Project.Singleton;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace _Project.Scripts.GameScene.Input
+namespace Assets._Project.Scripts.GameScene.Input
 {
     public interface IInputController : IInitializable, IFlushable, IKeyboardInputListener
     {

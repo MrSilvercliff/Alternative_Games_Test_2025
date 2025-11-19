@@ -1,4 +1,4 @@
-using _Project.Scripts.Project.Core;
+using _Project.Scripts.GameScene.Scene;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +21,7 @@ namespace _Project.Scripts.GameScene.Input
             if (context.phase != InputActionPhase.Performed)
                 return;
 
-            ProjectCore.Instance.InputController.OnUpArrowClicked();
+            GameCore.Instance.InputController.OnUpArrowClicked();
         }
 
         public void OnDownArrowInputAction(InputAction.CallbackContext context)
@@ -29,7 +29,7 @@ namespace _Project.Scripts.GameScene.Input
             if (context.phase != InputActionPhase.Performed)
                 return;
 
-            ProjectCore.Instance.InputController.OnDownArrowClicked();
+            GameCore.Instance.InputController.OnDownArrowClicked();
         }
 
         public void OnEnterInputAction(InputAction.CallbackContext context)
@@ -37,7 +37,7 @@ namespace _Project.Scripts.GameScene.Input
             if (context.phase != InputActionPhase.Performed)
                 return;
 
-            ProjectCore.Instance.InputController.OnEnterClicked();
+            GameCore.Instance.InputController.OnEnterClicked();
         }
     }
 }
