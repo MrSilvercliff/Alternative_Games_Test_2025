@@ -485,9 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: _Project.Scripts.GameScene::_Project.Scripts.GameScene.UI.Widgets.Hero.HeroSmoothExpandWidget
   _widgetLayoutElement: {fileID: 7039939421180476190}
-  _contentTransform: {fileID: 5552956543041937182}
   _contentLayout: {fileID: 4784729961103122206}
-  _descriptionTransform: {fileID: 220794463889809456}
   _descriptionText: {fileID: 3394546943792328893}
   _lerpTMultiplier: 10
 --- !u!1 &6440250692192395470
@@ -621,8 +619,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0412\u0430\u043B\u0435\u0441\u043A\u0430"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -652,7 +650,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 45
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
