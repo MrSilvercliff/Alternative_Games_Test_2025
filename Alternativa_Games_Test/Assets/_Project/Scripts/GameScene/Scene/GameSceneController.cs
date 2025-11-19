@@ -10,7 +10,6 @@ namespace _Project.Scripts.GameScene.Scene
 
         private void Awake()
         {
-            
         }
 
         private void Start()
@@ -24,6 +23,8 @@ namespace _Project.Scripts.GameScene.Scene
 
         private void OnDestroy()
         {
+            _heroesView.Flush();
+
             GameSceneCore.Instance.Flush();
             ProjectCore.Instance.Flush();
         }

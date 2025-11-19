@@ -18,6 +18,7 @@ namespace _Project.Scripts.GameScene.UI.Views.Heroes
 
         protected override bool OnFlush()
         {
+            _heroesScroll.Flush();
             return true;
         }
 
