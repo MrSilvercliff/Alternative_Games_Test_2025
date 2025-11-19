@@ -13,8 +13,12 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         public event Action ExpandEndEvent;
 
         public RectTransform RectTransform => _rectTransform;
+        public RectTransform AnchorTop => _anchorTop;
+        public RectTransform AnchorBottom => _anchorBottom;
 
         [SerializeField] private RectTransform _rectTransform;
+        [SerializeField] private RectTransform _anchorTop;
+        [SerializeField] private RectTransform _anchorBottom;
         [SerializeField] private HeroWidgetView _view;
         [SerializeField] private Button _buttonExpand;
         [SerializeField] private GameObject _description;
