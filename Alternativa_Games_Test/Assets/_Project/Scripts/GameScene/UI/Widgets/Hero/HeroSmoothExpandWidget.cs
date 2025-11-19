@@ -81,7 +81,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         private void OnUpdateExpandShow()
         {
-            if (_lerpT > 1.0f)
+            if (_lerpT >= 1.0f)
             {
                 _descriptionText.SetActive(true);
                 OnExpandEnd();
@@ -94,7 +94,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         private void OnUpdateExpandHide()
         {
-            if (_lerpT > 1.0f)
+            if (_lerpT >= 1.0f)
             {
                 OnExpandEnd();
                 return;
