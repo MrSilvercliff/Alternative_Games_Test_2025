@@ -16,8 +16,6 @@ namespace _Project.Scripts.GameScene.Scene
 
         private void Start()
         {
-            GameCore.Instance.Init();
-
             _heroesView.Init();
             _heroesView.gameObject.SetActive(true);
         }
@@ -27,7 +25,7 @@ namespace _Project.Scripts.GameScene.Scene
             _heroesView.gameObject.SetActive(false);
             _heroesView.Flush();
 
-            GameCore.Instance.Flush();
+            _gameCore.Flush();
         }
     }
 }

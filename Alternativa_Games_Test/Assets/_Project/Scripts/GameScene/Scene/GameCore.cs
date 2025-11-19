@@ -39,6 +39,7 @@ namespace _Project.Scripts.GameScene.Scene
         public override bool Init()
         {
             LogUtils.Info(this, $"Init");
+            _monoUpdater.Init();
             InitInput();
             InitHeroWidgetPool();
             return true;
