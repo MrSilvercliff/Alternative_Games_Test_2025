@@ -1,6 +1,7 @@
 using _Project.Scripts.GameScene.Scene;
 using _Project.Scripts.Project.Interfaces;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using ZerglingUnityPlugins.Tools.Scripts.Mono;
@@ -12,9 +13,9 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         public event Action ExpandStartEvent;
         public event Action ExpandEndEvent;
 
-        [SerializeField] private LayoutElement _layoutElement;
-        [SerializeField] private GameObject _descriptionText;
-        [SerializeField] private float _expandedHeight;
+        [SerializeField] private LayoutElement _widgetLayoutElement;
+        [SerializeField] private VerticalLayoutGroup _contentLayout;
+        [SerializeField] private TMP_Text _descriptionText;
         [SerializeField] private float _lerpTMultiplier;
 
         private const int EXPAND_DIRETION_SHOW_DESCRIPTION = 1;
@@ -52,18 +53,18 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
             _expandInProgress = true;
             _lerpT = 0.0f;
+            _descriptionText.alpha = 0.0f;
 
             if (_expandDirection == 0 || _expandDirection == EXPAND_DIRETION_HIDE_DESCRIPTION)
             {
-                _startHeight = _layoutElement.minHeight;
-                _endHeight = _expandedHeight;
+                _startHeight = _widgetLayoutElement.minHeight;
+                _endHeight = _widgetLayoutElement.minHeight + _contentLayout.spacing + _descriptionText.rectTransform.rect.height;
                 _expandDirection = EXPAND_DIRETION_SHOW_DESCRIPTION;
             }
             else
             {
-                _descriptionText.SetActive(false);
-                _startHeight = _expandedHeight;
-                _endHeight = _layoutElement.minHeight;
+                _startHeight = _widgetLayoutElement.minHeight + _contentLayout.spacing + _descriptionText.rectTransform.rect.height;
+                _endHeight = _widgetLayoutElement.minHeight;
                 _expandDirection = EXPAND_DIRETION_HIDE_DESCRIPTION;
             }
 
@@ -83,7 +84,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         {
             if (_lerpT >= 1.0f)
             {
-                _descriptionText.SetActive(true);
+                _descriptionText.alpha = 1.0f;
                 OnExpandEnd();
                 return;
             }
@@ -113,7 +114,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         private void UpdateHeight()
         {
             var height = Mathf.Lerp(_startHeight, _endHeight, _lerpT);
-            _layoutElement.preferredHeight = height;
+            _widgetLayoutElement.preferredHeight = height;
         }
 
         private void OnExpandEnd()
