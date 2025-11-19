@@ -1,4 +1,5 @@
 using _Project.Scripts.GameScene.Input;
+using _Project.Scripts.Project.Log;
 using _Project.Scripts.Project.MonoUpdate;
 using _Project.Scripts.Project.Singleton;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace _Project.Scripts.Project.Core
 
         public override bool Init()
         {
+            LogUtils.Info(this, $"Init");
             _monoUpdater.Init();
             InitInput();
             return true;
@@ -30,6 +32,7 @@ namespace _Project.Scripts.Project.Core
 
         public override bool Flush()
         {
+            LogUtils.Info(this, $"Flush");
             return true;
         }
 
