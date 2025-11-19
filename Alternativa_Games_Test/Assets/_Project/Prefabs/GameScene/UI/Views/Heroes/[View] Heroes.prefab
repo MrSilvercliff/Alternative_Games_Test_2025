@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5209946558909886379}
-  - component: {fileID: 6107914819106008682}
+  - component: {fileID: 8698366461743724748}
   m_Layer: 5
   m_Name: '[Widget] HeroesScroll'
   m_TagString: Untagged
@@ -128,7 +128,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6107914819106008682
+--- !u!114 &8698366461743724748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,14 +137,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093709986003685512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd4db40a1e8a6147ad6e3fe9c5107a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 527238892cf291f4aa4c70aac66e483c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: _Project.Scripts.GameScene::_Project.Scripts.GameScene.UI.Widgets.Hero.HeroesScroll
+  m_EditorClassIdentifier: _Project.Scripts.GameScene::_Project.Scripts.GameScene.UI.Widgets.Hero.HeroesScrollN
   _scrollRect: {fileID: 7473952195794416435}
   _scrollContentLayout: {fileID: 4678493966867278973}
-  _lerpTMultiplier: 4
   _raycastBlocker: {fileID: 3629057859783572108}
-  _contentSizeFitter: {fileID: 6746800785489160558}
+  _lerpTMultiplier: 4
 --- !u!1 &1566476305310935383
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edfdf95ffb43fb4595ecd1104400153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: _Project.Scripts.GameScene::_Project.Scripts.GameScene.UI.Views.Heroes.HeroesView
-  _heroesScroll: {fileID: 6107914819106008682}
+  _heroesScroll: {fileID: 8698366461743724748}
 --- !u!1 &9117359817359012129
 GameObject:
   m_ObjectHideFlags: 0
