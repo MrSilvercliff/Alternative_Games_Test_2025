@@ -1,22 +1,22 @@
 using _Project.Scripts.GameScene.Scene;
 using _Project.Scripts.GameScene.UI.Widgets.Hero;
-using _Project.Scripts.Project.UI.Views;
+using _Project.Scripts.Project.Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Project.Scripts.GameScene.UI.Views.Heroes
 {
-    public class HeroesView : View
+    public class HeroesView : MonoBehaviour, IInitializable, IFlushable
     {
         [SerializeField] private HeroesScroll _heroesScroll;
 
-        protected override bool OnInit()
+        public bool Init()
         {
             InitHeroesScroll();
             return true;
         }
 
-        protected override bool OnFlush()
+        public bool Flush()
         {
             _heroesScroll.Flush();
             return true;
@@ -25,7 +25,7 @@ namespace _Project.Scripts.GameScene.UI.Views.Heroes
         private void InitHeroesScroll()
         {
             _heroesScroll.Init();
-            var heroesList = GameSceneCore.Instance.Configs.Heroes.HeroDataList;
+            var heroesList = GameCore.Instance.HeroesConfig.HeroDataList;
             _heroesScroll.Setup(heroesList);
         }
     }
