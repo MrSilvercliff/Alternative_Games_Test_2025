@@ -193,13 +193,13 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
                 return;
             }
 
-            Debug.LogError($"SelectedIndex = {SelectedIndex} ; _lastSelectedIndex = {_lastSelectedIndex} ; SelectedIndex - _lastSelectedIndex = {SelectedIndex - _lastSelectedIndex}");
+            //Debug.LogError($"SelectedIndex = {SelectedIndex} ; _lastSelectedIndex = {_lastSelectedIndex} ; SelectedIndex - _lastSelectedIndex = {SelectedIndex - _lastSelectedIndex}");
 
             if (SelectedIndex - _lastSelectedIndex >= 0)
             {
                 if (_scrollRect.viewport.rect.Contains(anchorBottomPositionInViewport))
                 {
-                    LogUtils.Error(this, $"rect contains whole widget");
+                    //LogUtils.Error(this, $"rect contains whole widget");
                     return;
                 }
 
@@ -214,7 +214,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             {
                 if (_scrollRect.viewport.rect.Contains(anchorTopPositionInViewport))
                 {
-                    LogUtils.Error(this, $"rect contains whole widget");
+                    //LogUtils.Error(this, $"rect contains whole widget");
                     return;
                 }
 
