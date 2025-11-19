@@ -7,7 +7,7 @@ using ZerglingUnityPlugins.Tools.Scripts.Mono;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
-    public class HeroSmoothExpandWidget : MonoBehaviour, IInitializable, IMonoUpdatable
+    public class HeroSmoothExpandWidget : MonoBehaviour, IInitializable, IFlushable, IMonoUpdatable
     {
         public event Action ExpandStartEvent;
         public event Action ExpandEndEvent;
@@ -29,6 +29,17 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         public bool Init()
         {
+            _expandInProgress = false;
+            _expandDirection = 0;
+            return true;
+        }
+
+        public bool Flush()
+        {
+            if (!_expandInProgress)
+                return true;
+
+            ProjectCore.Instance.MonoUpdater.UnSubscribe(this);
             _expandInProgress = false;
             _expandDirection = 0;
             return true;

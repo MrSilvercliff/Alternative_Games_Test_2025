@@ -19,6 +19,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
         public void OnCreate()
         {
             gameObject.SetActive(false);
+            _expandWidget?.Init();
             _buttonExpand.onClick.AddListener(OnButtonExpandClick);
         }
 
@@ -37,6 +38,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             {
                 _expandWidget.ExpandStartEvent -= OnExpandStartEvent;
                 _expandWidget.ExpandEndEvent -= OnExpandEndEvent;
+                _expandWidget.Flush();
             }
 
             _data = null;
