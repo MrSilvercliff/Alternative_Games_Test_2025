@@ -1,5 +1,6 @@
 using _Project.Scripts.GameScene.UI.Views.Heroes;
 using _Project.Scripts.Project.Core;
+using _Project.Scripts.Project.Log;
 using UnityEngine;
 
 namespace _Project.Scripts.GameScene.Scene
@@ -10,7 +11,6 @@ namespace _Project.Scripts.GameScene.Scene
 
         private void Awake()
         {
-            
         }
 
         private void Start()
@@ -22,8 +22,10 @@ namespace _Project.Scripts.GameScene.Scene
             _heroesView.Open();
         }
 
-        private void OnDestroy()
+        private void OnApplicationQuit()
         {
+            _heroesView.Flush();
+
             GameSceneCore.Instance.Flush();
             ProjectCore.Instance.Flush();
         }

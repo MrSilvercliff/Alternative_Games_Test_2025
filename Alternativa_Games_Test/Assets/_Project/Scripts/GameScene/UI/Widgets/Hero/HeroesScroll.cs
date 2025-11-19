@@ -7,11 +7,14 @@ using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
     public class HeroesScroll : VerticalScrollRectWithSelect<HeroData, HeroWidget>, IKeyboardInputListener
     {
+        [SerializeField] private GameObject _raycastBlocker;
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -26,6 +29,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         protected override bool OnInit()
         {
+            _raycastBlocker.SetActive(false);
             return true;
         }
 
@@ -40,6 +44,14 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             SpawnWidgets();
         }
 
+        public override void OnUpdate()
+        {
+            if (_raycastBlocker.activeInHierarchy)
+                return;
+
+            base.OnUpdate();
+        }
+
         private void SpawnWidgets()
         {
             var heroWidgetPool = GameSceneCore.Instance.ObjectPools.HeroWidgetPool;
@@ -51,6 +63,8 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
                 var newWidget = heroWidgetPool.Spawn();
                 _widgetBasicHeight = newWidget.RectTransform.rect.height;
                 newWidget.WidgetSelectEvent += OnWidgetSelectEvent;
+                newWidget.ExpandStartEvent += OnWidgetExpandStartEvent;
+                newWidget.ExpandEndEvent += OnWidgetExpandEndEvent;
                 newWidget.transform.SetParent(ScrollRectContent);
                 newWidget.transform.ResetLocalPosition();
                 newWidget.transform.ResetLocalRotation();
@@ -69,28 +83,52 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             { 
                 var widget = _widgets[i];
                 widget.WidgetSelectEvent -= OnWidgetSelectEvent;
+                widget.ExpandStartEvent -= OnWidgetExpandStartEvent;
+                widget.ExpandEndEvent -= OnWidgetExpandEndEvent;
                 heroWidgetPool.Despawn(widget);
             }
         }
 
         private void OnWidgetSelectEvent(HeroWidget widget)
         {
+            _scrollRect.StopMovement();
             SelectWidget(widget);
             EventSystem.current.SetSelectedGameObject(_scrollRect.gameObject);
         }
 
+        private void OnWidgetExpandStartEvent()
+        {
+            _raycastBlocker.SetActive(true);
+            _scrollRect.StopMovement();
+        }
+
+        private void OnWidgetExpandEndEvent()
+        {
+            _raycastBlocker.SetActive(false);
+            _scrollRect.StopMovement();
+        }
+
         public void OnUpArrowClicked()
         {
+            if (_raycastBlocker.activeInHierarchy)
+                return;
+
             SelectPreviousWidget();
         }
 
         public void OnDownArrowClicked()
         {
+            if (_raycastBlocker.activeInHierarchy)
+                return;
+
             SelectNextWidget();
         }
 
         public void OnEnterClicked()
         {
+            if (_raycastBlocker.activeInHierarchy)
+                return;
+
             SelectedWidget.Interact();
         }
     }
