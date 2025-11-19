@@ -19,11 +19,12 @@ namespace _Project.Scripts.GameScene.Scene
             GameSceneCore.Instance.Init();
 
             _heroesView.Init();
-            _heroesView.Open();
+            _heroesView.gameObject.SetActive(true);
         }
 
         private void OnApplicationQuit()
         {
+            _heroesView.gameObject.SetActive(false);
             _heroesView.Flush();
 
             GameSceneCore.Instance.Flush();

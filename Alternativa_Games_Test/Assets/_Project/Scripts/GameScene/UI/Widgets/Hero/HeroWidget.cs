@@ -1,20 +1,26 @@
 using _Project.Scripts.GameScene.Configs;
 using _Project.Scripts.Project.ObjectPools;
-using _Project.Scripts.Project.UI.Widgets.ScrollRects.WithSelect;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 {
-    public class HeroWidget : SelectableWidget<HeroWidget, HeroData, HeroWidgetView>, IPoolable
+    public class HeroWidget : MonoBehaviour, IPoolable
     {
+        public event Action<HeroWidget> WidgetSelectEvent;
         public event Action ExpandStartEvent;
         public event Action ExpandEndEvent;
 
+        public RectTransform RectTransform => _rectTransform;
+
+        [SerializeField] private RectTransform _rectTransform;
+        [SerializeField] private HeroWidgetView _view;
         [SerializeField] private Button _buttonExpand;
         [SerializeField] private GameObject _description;
         [SerializeField] private HeroSmoothExpandWidget _expandWidget;
+
+        private HeroData _data;
 
         public void OnCreate()
         {
@@ -44,10 +50,21 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             _data = null;
         }
 
+        public void SetSelected(bool selected)
+        {
+            _view.SetSelected(selected);
+        }
+
+        public void Setup(HeroData data)
+        {
+            _data = data;
+            _view.Refresh(data);
+        }
+
         private void OnButtonExpandClick()
         {
+            WidgetSelectEvent?.Invoke(this);
             Interact();
-            InvokeSelectEvent(this);
         }
 
         public void Interact()
