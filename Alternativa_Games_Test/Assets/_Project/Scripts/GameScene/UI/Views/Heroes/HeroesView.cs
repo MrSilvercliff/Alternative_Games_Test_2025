@@ -25,7 +25,7 @@ namespace _Project.Scripts.GameScene.UI.Views.Heroes
         private void InitHeroesScroll()
         {
             _heroesScroll.Init();
-            var heroesList = GameSceneCore.Instance.Configs.Heroes.HeroDataList;
+            var heroesList = GameCore.Instance.HeroesConfig.HeroDataList;
             _heroesScroll.Setup(heroesList);
         }
     }

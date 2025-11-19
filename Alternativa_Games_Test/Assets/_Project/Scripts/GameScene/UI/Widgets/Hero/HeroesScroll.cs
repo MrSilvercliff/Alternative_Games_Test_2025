@@ -1,7 +1,6 @@
 using _Project.Scripts.GameScene.Configs;
 using _Project.Scripts.GameScene.Input;
 using _Project.Scripts.GameScene.Scene;
-using _Project.Scripts.Project.Core;
 using _Project.Scripts.Project.Extensions;
 using _Project.Scripts.Project.Interfaces;
 using System.Collections.Generic;
@@ -36,14 +35,14 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         protected virtual void OnEnable()
         {
-            ProjectCore.Instance.InputController.Subscribe(this);
-            ProjectCore.Instance.MonoUpdater.Subscribe(this);
+            GameCore.Instance.InputController.Subscribe(this);
+            GameCore.Instance.MonoUpdater.Subscribe(this);
         }
 
         protected virtual void OnDisable()
         {
-            ProjectCore.Instance.InputController.UnSubscribe(this);
-            ProjectCore.Instance.MonoUpdater.UnSubscribe(this);
+            GameCore.Instance.InputController.UnSubscribe(this);
+            GameCore.Instance.MonoUpdater.UnSubscribe(this);
         }
 
         public bool Init()
@@ -91,7 +90,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         private void SpawnWidgets()
         {
-            var heroWidgetPool = GameSceneCore.Instance.ObjectPools.HeroWidgetPool;
+            var heroWidgetPool = GameCore.Instance.HeroWidgetPool;
 
             for (int i = 0; i < _widgetDatas.Count; i++)
             {
@@ -114,7 +113,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         private void DespawnWidgets()
         {
-            var heroWidgetPool = GameSceneCore.Instance.ObjectPools.HeroWidgetPool;
+            var heroWidgetPool = GameCore.Instance.HeroWidgetPool;
 
             for (int i = 0; i < _widgets.Count; i++)
             {

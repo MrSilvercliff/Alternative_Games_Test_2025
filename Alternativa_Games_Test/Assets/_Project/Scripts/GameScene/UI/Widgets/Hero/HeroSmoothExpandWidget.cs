@@ -1,4 +1,4 @@
-using _Project.Scripts.Project.Core;
+using _Project.Scripts.GameScene.Scene;
 using _Project.Scripts.Project.Interfaces;
 using System;
 using UnityEngine;
@@ -39,7 +39,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             if (!_expandInProgress)
                 return true;
 
-            ProjectCore.Instance.MonoUpdater.UnSubscribe(this);
+            GameCore.Instance.MonoUpdater.UnSubscribe(this);
             _expandInProgress = false;
             _expandDirection = 0;
             return true;
@@ -68,7 +68,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
             }
 
             ExpandStartEvent?.Invoke();
-            ProjectCore.Instance.MonoUpdater.Subscribe(this);
+            GameCore.Instance.MonoUpdater.Subscribe(this);
         }
 
         public void OnUpdate()
@@ -118,7 +118,7 @@ namespace _Project.Scripts.GameScene.UI.Widgets.Hero
 
         private void OnExpandEnd()
         {
-            ProjectCore.Instance.MonoUpdater.UnSubscribe(this);
+            GameCore.Instance.MonoUpdater.UnSubscribe(this);
             ExpandEndEvent?.Invoke();
             _expandInProgress = false;
         }
